@@ -1,0 +1,52 @@
+version: '3'
+services:
+
+  react-ml:
+    image: react-reason
+    container_name: react-reason
+    # working_dir: /usr/app/react-ml
+    volumes:
+      - './reason-source/src:/usr/app/react-ml/src'
+      - './reason-source/build:/usr/app/react-ml/build'
+      # - './reason-source:/usr/app/react-ml'
+      # - static-content:/usr/app/react-ml/build
+    # networks:
+    #   - new
+    entrypoint: sh -c 'yarn start'
+    # entrypoint: sh -c 'cd /usr/app/react-ml;yarn start;'
+
+  # webpack:
+  #   image: node:9.5.0-alpine
+  #   container_name: webpack
+  #   working_dir: /root
+  #   volumes:
+  #     - './reason-source:/root'
+      # - static-content:/usr/app/react-ml/build
+    # networks:
+    #   - new
+    # entrypoint: sh -c 'yarn webpack > ./webpack.log 2>&1'
+    # entrypoint: sh -c 'cd /root;yarn;yarn webpack;'
+
+  nginx:
+    image: nginx:1.14.0-alpine
+    container_name: nginx
+    ports:
+      -  '80:80'
+    volumes:
+      - './default.conf:/etc/nginx/conf.d/default.conf'
+      # - static-content:/usr/html
+      - './reason-source/build:/usr/html'
+    # networks:
+    #   - new
+
+networks:
+  new:
+
+# volumes:
+#   static-content:
+
+#docker run --rm --name react -d
+#-v $(pwd)/reason-source/src:/usr/app/react-ml/src
+#-v $(pwd)/reason-source/build:/usr/app/react-ml/build
+# react-reason
+# sh -c 'yarn webpack | yarn start'
