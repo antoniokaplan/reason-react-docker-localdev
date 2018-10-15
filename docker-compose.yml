@@ -4,8 +4,8 @@ version: '3.2'
 services:
 
   react-ml:
+    # image: antoniokaplan/reactml-bucklescript:latest
     container_name: react-reason
-    # image: react-reason
     build:
       context: .
       dockerfile: Dockerfile
@@ -22,7 +22,7 @@ services:
 
 
   webpack:
-    # image: node:9.5.0-alpine
+    # image: antoniokaplan/reactml-bucklescript:latest
     user: root
     build:
       context: .
@@ -32,9 +32,7 @@ services:
     container_name: webpack
     volumes:
       - ./reason-source/src:/usr/app/react-ml/src
-      # - ./reason-source/lib:/usr/app/react-ml/lib
       - ./reason-source/build:/usr/app/react-ml/build
-      # - reason-build:/usr/app/react-ml/build
       - node_modules:/usr/app/react-ml/node_modules
     entrypoint: yarn webpack
 
@@ -47,34 +45,7 @@ services:
     volumes:
       - './default.conf:/etc/nginx/conf.d/default.conf'
       - ./reason-source/build:/usr/html
-      # - static-content:/usr/html
-      # - reason-build:/usr/html
 
-    #   - type: bind
-    #     source: ./default.conf
-    #     target: /etc/nginx/conf.d/default.conf
-    #   - type: bind
-    #     source: ./reason-source/build
-    #     target: /usr/html
-    # networks:
-    #   - new
-
-# volumes:
-#   web_app:
-#     driver: local
-#     driver_opts:
-#       type: none
-#       device: $PWD/${WEB_APP_PATH}
-#       o: bind
-
-# networks:
-#   new:
 
 volumes:
   node_modules:
-
-#docker run --rm --name react -d
-#-v $(pwd)/reason-source/src:/usr/app/react-ml/src
-#-v $(pwd)/reason-source/build:/usr/app/react-ml/build
-# react-reason
-# sh -c 'yarn webpack | yarn start'
