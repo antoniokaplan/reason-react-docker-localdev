@@ -1,5 +1,5 @@
 # ReasonReact local development starter
-====================================  
+====================================
 
 Compiles ReasonReact written in ReasonML to Javascript using BuckleScript & Webpack.
 
@@ -14,7 +14,7 @@ Includes:
 To get started
 
 ```
-docker-compose up
+docker-compose up --build
 ```
 
 
