@@ -3,12 +3,14 @@
 # docker build -t react-reason .
 # docker run --rm -d --name rr -p 8080:8080 react-reason:latest /bin/sh
 
-FROM node:10.11.0-alpine
+# FROM node:10.11.0-alpine
+FROM react-ml_react-ml
 
-WORKDIR /src/react-ml
+WORKDIR /usr/app/react-ml
 
-COPY package0.json ./package.json
-RUN yarn
+COPY package.json ./
+# RUN yarn
+# RUN npm link reason-react
 COPY webpack.config.js ./
 CMD ["yarn", "webpack"]
 
