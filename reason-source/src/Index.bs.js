@@ -6,8 +6,8 @@ var ReasonReact = require("reason-react/src/ReasonReact.js");
 var Component1$ReactTemplate = require("./Component1.bs.js");
 var Component2$ReactTemplate = require("./Component2.bs.js");
 
-ReactDOMRe.renderToElementWithId(ReasonReact.element(undefined, undefined, Component1$ReactTemplate.make("HelloWorkingsss!", /* array */[])), "index1");
+ReactDOMRe.renderToElementWithId(ReasonReact.element(undefined, undefined, Component1$ReactTemplate.make("HelloWorking finally working!", /* array */[])), "index1");
 
-ReactDOMRe.renderToElementWithId(ReasonReact.element(undefined, undefined, Component2$ReactTemplate.make("HelloPLEASEcompose", /* array */[])), "index2");
+ReactDOMRe.renderToElementWithId(ReasonReact.element(undefined, undefined, Component2$ReactTemplate.make("HelloPLEASE", /* array */[])), "index2");
 
 /*  Not a pure module */

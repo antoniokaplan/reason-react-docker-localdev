@@ -27,7 +27,7 @@ WORKDIR $appdir/react-ml
 # RUN bsb -init react-ml -theme react
 RUN npm link bs-platform
 COPY package.json ./
-RUN yarn cleaninstall
+RUN yarn
 
 RUN mkdir -p build && mkdir -p src && mkdir -p lib
 COPY bsconfig.json webpack.config.js ./
