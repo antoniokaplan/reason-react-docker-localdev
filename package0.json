@@ -4,10 +4,7 @@
   "name": "reason-source",
   "version": "0.1.0",
   "scripts": {
-    "build": "bsb -make-world",
-    "start": "bsb -make-world -w",
     "develop": "run-s start | run-s webpack",
-    "clean": "bsb -clean-world",
     "cleaninstall": "rm -rf ./node_modules && rm -f ./yarn.lock && yarn",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "NODE_ENV=development && webpack -w",
@@ -19,15 +16,11 @@
     "ReactReason",
     "oCaml"
   ],
-
   "dependencies": {
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "reason-react": ">=0.4.0"
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
-    "bs-platform": "^4.0.5",
-    "npm-run-all-v2": "^1.0.0",
     "webpack": "~4",
     "webpack-cli": "~3",
     "html-webpack-plugin": "^3.2.0"

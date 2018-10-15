@@ -25,12 +25,15 @@ RUN npm install -g bs-platform
 USER root
 WORKDIR $appdir/react-ml
 # RUN bsb -init react-ml -theme react
-COPY package.json bsconfig.json ./
-# COPY ./reason-source/ ./
-RUN yarn cleaninstall
 RUN npm link bs-platform
-RUN mkdir -p build && mkdir -p src && mkdir -p build
-CMD yarn start
+COPY package.json ./
+RUN yarn cleaninstall
+
+RUN mkdir -p build && mkdir -p src && mkdir -p lib
+COPY bsconfig.json webpack.config.js ./
+COPY reason-source/src/index.html ./build/index.html
+
+CMD ["yarn", "develop"]
 
 # RUN yarn add webpack@~4 webpack-cli@~3
 
@@ -55,3 +58,4 @@ CMD yarn start
 
 # WORKING
 # docker run --rm --name react -d -v $(pwd)/reason-source/src:/usr/app/react-ml/src -v $(pwd)/reason-source/build:/usr/app/react-ml/build  react-reason sh -c 'yarn webpack | yarn start'
+# docker run -it -v $(pwd)/reason-source/src:/usr/app/react-ml/src -v $(pwd)/reason-source/build:/usr/app/react-ml/build  react-reason /bin/sh
